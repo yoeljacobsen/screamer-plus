@@ -8,7 +8,7 @@
 ;;;              ===================================================
 ;;;
 ;;;                  Copyright 1998-2000 University of Aberdeen
-;;;                  
+;;;
 ;;; This source code may be used cost-free for non-commercial use. However,
 ;;; I request that you provide me with a short description of how you are
 ;;; using the software so that I can build up a profile of applications.
@@ -99,7 +99,7 @@
   (:nicknames :?)
   (:use :common-lisp :screamer)
   (:shadowing-import-from :screamer
-    :defun :multiple-value-bind :y-or-n-p)
+   :defun :multiple-value-bind :y-or-n-p)
   (:import-from :screamer 
     :known?-true :known?-false :variable-enumerated-domain :variable-enumerated-antidomain
     :assert!-equalv :assert!-constraint :assert!-memberv-internal :variable? :attach-noticer!)
@@ -138,7 +138,8 @@
   (remove :operator excl:*redefinition-warnings*))
 
 (eval-when (:load-toplevel :execute :compile-toplevel)
-  (declaim (optimize (speed 1) (safety 3) (space 0) (debug 3))))
+  (declaim (optimize (speed 1) (safety 3) (space 0) (debug 3)))
+  #+ccl (import 'ccl:compiler-let :screamer))
 
 (in-package :screamer)
 
